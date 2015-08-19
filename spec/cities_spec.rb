@@ -7,4 +7,10 @@ describe('Cities') do
         expect(new_city.id).to(eq(1))
     end
   end
+  describe('#name') do
+    it('returns an name') do
+      new_city = Cities.new({:name => "Aleppo", :id => 1})
+        expect(new_city.name).to(eq("Aleppo"))
+    end
+  end
 end
