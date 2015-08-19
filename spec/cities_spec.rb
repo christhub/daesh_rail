@@ -32,4 +32,10 @@ describe('Cities') do
       expect(new_city_1).to(eq(new_city_1))
     end
   end
+  describe('#find') do
+    it("finds a city by an id") do
+      @new_city.save
+      expect(Cities.find(1)).to(eq(@new_city))
+    end
+  end
 end

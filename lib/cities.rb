@@ -24,4 +24,13 @@ class Cities
     (self.name && self.id) == (city.name && city.id)
   end
 
+  define_singleton_method(:find) do |id|
+    cities_arr = Cities.all
+    cities_arr.each do |city|
+      if city.id == id
+        return city
+      end
+    end
+  end
+
 end
