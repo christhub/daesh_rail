@@ -33,7 +33,7 @@ post('/employee/new/') do
   departure_time = params.fetch('departure_time', nil)
   final_destination_city = params.fetch('final_destination_city', nil)
   arrival_time = params.fetch('arrival_time', nil)
-  stops = params.fetch('stops', nil)
+  stops = params.fetch('stops', nil).join(" ")
   new_train = Train.new({:id => nil, :train_name => train_name, :origin_city => origin_city, :departure_time => departure_time, :final_destination_city => final_destination_city, :arrival_time => arrival_time, :stops => stops})
   new_train.save
   erb(:employee_form_success)

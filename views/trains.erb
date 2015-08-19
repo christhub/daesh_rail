@@ -1,9 +1,34 @@
 <h2>Trains!</h2>
 
   <% if @trains.any? %>
+    <table>
+      <tr>
+        <th>Train Name</th>
+        <th>Origin City</th>
+        <th>Final Destination</th>
+        <th>Departure Time</th>
+        <th>Stops</th>
+      </tr>
     <% @trains.each() do |train| %>
-    <%= train.train_name - train.origin_city to train.origin_city - train.id %>
+    <tr>
+      <td>
+        <%= train.train_name %>
+      </td>
+      <td>
+        <%= train.origin_city%>
+      </td>
+      <td>
+        <%=train.final_destination_city%>
+      </td>
+      <td>
+        <%=train.departure_time%>
+      </td>
+      <td>
+        <%=train.stops%>
+      </td>
+    <tr>
     <% end %>
+    </table>
   <% else %>
 
     There are no trains, there may have been an incident. Check Al-Jazeera for details.

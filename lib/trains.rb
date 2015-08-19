@@ -21,6 +21,7 @@ class Train
       departure_time = train.fetch('departure_time')
       final_destination_city = train.fetch('final_destination_city')
       arrival_time = train.fetch('arrival_time')
+      stops = train.fetch('stops')
       trains << Train.new({:id => id, :train_name => train_name, :origin_city => origin_city, :departure_time => departure_time, :final_destination_city => final_destination_city, :arrival_time => arrival_time, :stops => stops})
     end
     trains
