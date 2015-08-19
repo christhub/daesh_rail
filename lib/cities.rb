@@ -31,6 +31,7 @@ class Cities
         return city
       end
     end
+    nil
   end
 
 end
