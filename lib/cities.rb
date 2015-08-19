@@ -16,4 +16,8 @@ class Cities
     cities
   end
 
+  define_method(:save) do
+    DB.exec("INSERT INTO cities (name, id) VALUES ('#{name}', '#{id}')")
+  end
+
 end

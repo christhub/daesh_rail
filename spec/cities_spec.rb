@@ -19,4 +19,10 @@ describe('Cities') do
       expect(Cities.all).to(eq([]))
     end
   end
+  describe('#save') do
+    it('saves a city to the cities database') do
+      @new_city.save
+      expect(Cities.all).to(eq([@new_city]))
+    end
+  end
 end
