@@ -24,4 +24,15 @@ class Train
   define_method(:==) do |other_train|
     (self.name && self.id) == (other_train.name && other_train.id)
   end
+
+  define_singleton_method(:find) do |identifier|
+    found_train = nil
+    trains = Train.all
+    trains.each() do |train|
+      if train.id == identifier
+        found_train = train
+      end
+    end
+    found_train
+  end
 end

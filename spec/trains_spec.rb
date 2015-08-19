@@ -38,4 +38,12 @@ describe(Train) do
       expect(train1).to(eq(train2))
     end
   end
+
+  describe('.find') do
+    it("will find the train given its identifier") do
+      @new_train.save
+      expect(Train.find(1)).to(eq(@new_train))
+    end
+  end
+
 end
