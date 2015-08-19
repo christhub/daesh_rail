@@ -1,0 +1,11 @@
+<h2>Trains!</h2>
+
+  <% if @trains.any? %>
+    <% @trains.each() do |train| %>
+    <%= train.train_name - train.origin_city to train.origin_city - train.id %>
+    <% end %>
+  <% else %>
+
+    There are no trains, there may have been an incident. Check Al-Jazeera for details.
+
+  <% end %>

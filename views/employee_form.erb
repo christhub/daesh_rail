@@ -1,0 +1,45 @@
+<form method="post" action="/employee/new/">
+    <h3>Add a Train</h3>
+    <div class="form-group">
+      <label for="train_name">Train Name</label>
+      <input type="text" name="train_name">
+    </div>
+    <div class="form-group">
+      <label for="origin_city">Origin City</label>
+      <input type="text" name="origin_city">
+    </div>
+    <div class="form-group">
+      <label for="departure_time">Departure Time</label>
+      <input type="text" name="departure_time">
+    </div>
+    <div class="form-group">
+      <label for="final_destination_city">Final Destination City</label>
+      <input type="text" name="final_destination_city">
+    </div>
+    <div class="form-group">
+      <label for="arrival_time">Arrival Time</label>
+      <input type="text" name="arrival_time">
+    </div>
+    <div class="form-group">
+      <label for="stops">Stops</label>
+      <label for="stops">Cairo</label>
+      <input type="checkbox" name="stops[]" value="Cairo">
+      <label for="stops">Jerusalem</label>
+      <input type="checkbox" name="stops[]" value="Jerusalem">
+      <label for="stops">Beirut</label>
+      <input type="checkbox" name="stops[]" value="Beirut">
+      <label for="stops">Amman</label>
+      <input type="checkbox" name="stops[]" value="Amman">
+      <label for="stops">Damascus</label>
+      <input type="checkbox" name="stops[]" value="Damascus">
+      <label for="stops">Aleppo</label>
+      <input type="checkbox" name="stops[]" value="Aleppo">
+      <label for="stops">Baghdad</label>
+      <input type="checkbox" name="stops[]" value="Baghdad">
+      <label for="stops">Mosul</label>
+      <input type="checkbox" name="stops[]" value="Mosul">
+      <label for="stops">Istanbul</label>
+      <input type="checkbox" name="stops[]" value="Istanbul">
+    </div>
+    <button type="submit">Submit</button>
+</form>
