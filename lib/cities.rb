@@ -11,13 +11,17 @@ class Cities
     database_results = DB.exec("SELECT * FROM cities;")
     cities = []
     database_results.each do |city|
-      cities << Cities.new({name: city.fetch('name'), id: city.fetch('id')})
+      cities << Cities.new({name: city.fetch('name'), id: city.fetch('id').to_i})
     end
     cities
   end
 
   define_method(:save) do
-    DB.exec("INSERT INTO cities (name, id) VALUES ('#{name}', '#{id}')")
+    DB.exec("INSERT INTO cities (name, id) VALUES ('#{name}', #{id})")
+  end
+
+  define_method(:==) do |city|
+    (self.name && self.id) == (city.name && city.id)
   end
 
 end
