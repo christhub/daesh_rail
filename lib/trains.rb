@@ -45,4 +45,8 @@ class Train
     end
     found_train
   end
+
+  define_singleton_method(:clear) do
+    DB.exec("DELETE FROM trains *;")
+  end
 end

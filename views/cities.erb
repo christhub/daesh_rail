@@ -2,10 +2,8 @@
 
   <% if @cities.any? %>
     <% @cities.each() do |city| %>
-    <%= city.name - city.time - city.id %>
+    <%= city.city_name %> - <%= city.city_stops %> - <%= city.id %> <br>
     <% end %>
   <% else %>
-
     <p>There are no cities in the database?</p>
-
   <% end %>

@@ -1,4 +1,4 @@
-<form method="post" action="/employee/new/">
+<form method="post" action="/employee/new_train/">
     <h3>Add a Train</h3>
     <div class="form-group">
       <label for="train_name">Train Name</label>
@@ -21,25 +21,62 @@
       <input type="text" name="arrival_time">
     </div>
     <div class="form-group">
-      <label for="stops">Stops</label>
-      <label for="stops">Cairo</label>
-      <input type="checkbox" name="stops[]" value="Cairo">
-      <label for="stops">Jerusalem</label>
-      <input type="checkbox" name="stops[]" value="Jerusalem">
-      <label for="stops">Beirut</label>
-      <input type="checkbox" name="stops[]" value="Beirut">
-      <label for="stops">Amman</label>
-      <input type="checkbox" name="stops[]" value="Amman">
-      <label for="stops">Damascus</label>
-      <input type="checkbox" name="stops[]" value="Damascus">
-      <label for="stops">Aleppo</label>
-      <input type="checkbox" name="stops[]" value="Aleppo">
-      <label for="stops">Baghdad</label>
-      <input type="checkbox" name="stops[]" value="Baghdad">
-      <label for="stops">Mosul</label>
-      <input type="checkbox" name="stops[]" value="Mosul">
-      <label for="stops">Istanbul</label>
-      <input type="checkbox" name="stops[]" value="Istanbul">
+      <% if @stops.any? %>
+      <label for="stops">Stops:</label>
+      <% @stops.each() do |stop| %>
+      <label for="stops"><%= stop.stop_name %></label>
+      <input type="checkbox" name="stops[]" value="<%= stop.stop_name %>">
+      <% end %>
+      <% else %>
+          No Stops, Add some stops!
+      <% end %>
     </div>
     <button type="submit">Submit</button>
+</form>
+
+<form action="/employee/clear_trains/" method="post">
+  <button type="submit">Clear Trains</button>
+</form>
+
+<form method="post" action="/employee/new_city/">
+    <h3>Add a City</h3>
+    <div class="form-group">
+      <label for="city_name">City Name</label>
+      <input type="text" name="city_name">
+    </div>
+    <div class="form-group">
+      <% if @stops.any? %>
+      <label for="stops">Stops:</label>
+      <% @stops.each() do |stop| %>
+      <label for="stops"><%= stop.stop_name %></label>
+      <input type="checkbox" name="stops[]" value="<%= stop.stop_name %>">
+      <% end %>
+      <% else %>
+          No Stops, Add some stops!
+      <% end %>
+    </div>
+    <button type="submit">Submit</button>
+</form>
+
+<form action="/employee/clear_cities/" method="post">
+  <button type="submit">Clear Cities</button>
+</form>
+
+<form method="post" action="/employee/new_stop/">
+<h3>Add a New Stop</h3>
+<div class="form-group">
+  <label for="train_id">Train Name</label>
+  <input type="text" name="train_name">
+  <label for="stop_id">Stop Name</label>
+  <input type="text" name="stop_name">
+  <label for="city_id">City Name</label>
+  <input type="text" name="city_name">
+  <label for="time">Time</label>
+  <input type="text" name="time">
+  <button type="submit">Add New Stop</button>
+</div>
+</form>
+
+<form action="/employee/clear_stops/" method="post">
+  <button type="submit">Clear Stops</button>
 </form>

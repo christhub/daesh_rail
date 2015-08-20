@@ -23,18 +23,51 @@ get('/trains/') do
 end
 
 get('/employee/') do
+  @stops = Stop.all
   erb(:employee_form)
 end
 
-post('/employee/new/') do
-  city_name = params.fetch('city_name', nil)
-  train_name = params.fetch('train_name', nil)
-  origin_city = params.fetch('origin_city', nil)
-  departure_time = params.fetch('departure_time', nil)
-  final_destination_city = params.fetch('final_destination_city', nil)
+post('/employee/new_train/') do
+  train_name = params.fetch('train_name')
+  origin_city = params.fetch('origin_city')
+  departure_time = params.fetch('departure_time')
+  final_destination_city = params.fetch('final_destination_city')
   arrival_time = params.fetch('arrival_time', nil)
-  stops = params.fetch('stops', nil).join(" ")
+  stops = params.fetch('stops').join(" ")
   new_train = Train.new({:id => nil, :train_name => train_name, :origin_city => origin_city, :departure_time => departure_time, :final_destination_city => final_destination_city, :arrival_time => arrival_time, :stops => stops})
   new_train.save
+  erb(:employee_form_success)
+end
+
+post('/employee/new_city/') do
+  city_name = params.fetch('city_name', nil)
+  city_stops = params.fetch('city_stops', nil).join('')
+  new_city = Cities.new({:id => nil, :city_name => city_name, :city_stops => city_stops})
+  new_city.save
+  erb(:employee_form_success)
+end
+
+post('/employee/clear_trains/') do
+  Train.clear()
+  erb(:employee_form_success)
+end
+
+post('/employee/clear_cities/') do
+  Cities.clear()
+  erb(:employee_form_success)
+end
+
+post('/employee/new_stop/') do
+  train_name = params.fetch('train_name')
+  stop_name = params.fetch('stop_name')
+  city_name = params.fetch('city_name')
+  time = params.fetch('time')
+  new_train = Stop.new({:id => nil, :train_name => train_name, :city_name => city_name, :stop_name => stop_name, :time => time})
+  new_train.save
+  erb(:employee_form_success)
+end
+
+post('/employee/clear_stops/') do
+  Stop.clear()
   erb(:employee_form_success)
 end
