@@ -1,80 +1,82 @@
 <form method="post" action="/employee/new_train/">
-    <h3>Add a Train</h3>
-    <div class="form-group">
-      <label for="train_name">Train Name</label>
-      <input type="text" name="train_name">
-    </div>
-    <div class="form-group">
-      <label for="origin_city">Origin City</label>
-      <input type="text" name="origin_city">
-    </div>
-    <div class="form-group">
-      <label for="departure_time">Departure Time</label>
-      <input type="text" name="departure_time">
-    </div>
-    <div class="form-group">
-      <label for="final_destination_city">Final Destination City</label>
-      <input type="text" name="final_destination_city">
-    </div>
-    <div class="form-group">
-      <label for="arrival_time">Arrival Time</label>
-      <input type="text" name="arrival_time">
-    </div>
-    <div class="form-group">
-      <% if @stops.any? %>
+  <h2>Add a Train</h2>
+  <div class="form-group">
+    <label for="train_name">Train Name</label>
+    <input type="text" name="train_name">
+  </div>
+  <div class="form-group">
+    <label for="origin_city">Origin City</label>
+    <input type="text" name="origin_city">
+  </div>
+  <div class="form-group">
+    <label for="departure_time">Departure Time</label>
+    <input type="text" name="departure_time">
+  </div>
+  <div class="form-group">
+    <label for="final_destination_city">Final Destination City</label>
+    <input type="text" name="final_destination_city">
+  </div>
+  <div class="form-group">
+    <label for="arrival_time">Arrival Time</label>
+    <input type="text" name="arrival_time">
+  </div>
+  <div class="form-group">
+    <% if @stops.any? %>
       <label for="stops">Stops:</label>
       <% @stops.each() do |stop| %>
       <label for="stops"><%= stop.city_name %></label>
       <input type="checkbox" name="stops[]" value="<%= stop.stop_name %>">
       <% end %>
-      <% else %>
-          No Stops, Add some stops!
-      <% end %>
-    </div>
-    <button type="submit">Submit</button>
+    <% else %>
+        No Stops, Add some stops!
+    <% end %>
+  </div>
+  <button class="btn btn-primary" type="submit">Submit</button>
 </form>
 
 <form action="/employee/clear_trains/" method="post">
-  <button type="submit">Clear Trains</button>
+  <button class="btn btn-danger" type="submit">Clear Trains</button>
 </form>
 
 <form method="post" action="/employee/new_city/">
-    <h3>Add a City</h3>
-    <div class="form-group">
-      <label for="city_name">City Name</label>
-      <input type="text" name="city_name">
-    </div>
-    <div class="form-group">
-      <% if @stops.any? %>
+  <h2>Add a City</h2>
+  <div class="form-group">
+    <label for="city_name">City Name</label>
+    <input type="text" name="city_name">
+  </div>
+  <div class="form-group">
+    <% if @stops.any? %>
       <label for="stops">Stops:</label>
       <% @stops.each() do |stop| %>
       <label for="city_stops"><%= stop.city_name %></label>
       <input type="checkbox" name="city_stops[]" value="<%= stop.stop_name %>">
-      <% end %>
-      <% else %>
-          No Stops, Add some stops!
-      <% end %>
-    </div>
-    <button type="submit">Submit</button>
+    <% end %>
+    <% else %>
+        No Stops, Add some stops!
+    <% end %>
+  </div>
+  <button class="btn btn-primary" type="submit">Submit</button>
 </form>
 
 <form action="/employee/clear_cities/" method="post">
-  <button type="submit">Clear Cities</button>
+  <button class="btn btn-danger" type="submit">Clear Cities</button>
 </form>
 
 <form method="post" action="/employee/new_stop/">
-<h3>Add a New Stop</h3>
-<div class="form-group">
-  <label for="stop_id">Stop Name</label>
-  <input type="text" name="stop_name">
-  <label for="city_id">City Name</label>
-  <input type="text" name="city_name">
-  <button type="submit">Add New Stop</button>
-</div>
+  <h2>Add a New Stop</h2>
+  <div class="form-group">
+    <label for="stop_id">Stop Name</label>
+    <input type="text" name="stop_name">
+  </div>
+  <div class="form-group">
+    <label for="city_id">City Name</label>
+    <input type="text" name="city_name">
+  </div>
+  <button class="btn btn-primary" type="submit">Add New Stop</button>
 </form>
 
 <form action="/employee/clear_stops/" method="post">
-  <button type="submit">Clear Stops</button>
+  <button class="btn btn-danger" type="submit">Clear Stops</button>
 </form>
 
-<a href="/">go back</a>
+<a href="/">Go Back</a>

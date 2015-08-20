@@ -95,3 +95,16 @@ delete('/employee/delete_train/:id/') do
   @trains = Train.all()
   redirect('/trains/')
 end
+
+get('/employee/password/') do
+  erb(:password)
+end
+
+post('/employee/password/') do
+  password = params.fetch('password')
+  if password == 'password123'
+    redirect('/employee/')
+  else
+    redirect('/')
+  end
+end

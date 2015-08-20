@@ -1,13 +1,14 @@
-<h2>Trains!</h2>
+<h2 class="text-center">Trains!</h2>
 
   <% if @trains.any? %>
-    <table>
+    <table class="table table-striped">
       <tr>
         <th>Train Name</th>
         <th>Origin City</th>
         <th>Final Destination</th>
         <th>Departure Time</th>
         <th>Stops</th>
+        <th></th>
         <th></th>
       </tr>
     <% @trains.each() do |train| %>
@@ -28,12 +29,12 @@
         <%=train.stops%>
       </td>
       <td>
-        <a href="/employee/modify_train/<%= train.id %>/">Update</a>
+        <button class="btn btn-primary"><a style="color: #fff" href="/employee/modify_train/<%= train.id %>/">Update</a></button>
       </td>
       <td>
         <form action="/employee/delete_train/<%= train.id() %>/" method="post">
           <input name="_method" type="hidden" value="delete">
-          <button type="submit">Delete</button>
+          <button type="submit" class="btn btn-danger">Delete</button>
         </form>
       </td>
     <tr>

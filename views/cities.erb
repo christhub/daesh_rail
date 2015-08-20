@@ -1,9 +1,24 @@
-<h2>Cities!</h2>
+<h2 class="text-center">Cities!</h2>
 
   <% if @cities.any? %>
     <% @cities.each() do |city| %>
-    <%= city.city_name %> - <%= city.city_stops %> - <%= city.id %> <br>
+    <table class="table table-striped">
+      <tr>
+        <th>City</th>
+        <th>Stations</th>
+      </tr>
+      <tr>
+        <td>
+          <%= city.city_name %>
+        </td>
+        <td>
+          <%= city.city_stops %>
+        </td>
+      </tr>
+    </table>
     <% end %>
   <% else %>
     <p>There are no cities in the database?</p>
   <% end %>
+
+<a href="/">Go Back</a>
