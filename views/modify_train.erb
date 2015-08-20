@@ -1,0 +1,33 @@
+<form method="post" action="/employee/modify_train">
+    <input name="_method" type="hidden" value="patch">
+    <h3>Modify a train!</h3>
+    <input name="id" type="hidden" value="<%= @id %>">
+    <div class="form-group">
+      <label for="train_name">Train Name</label>
+      <input type="text" name="train_name">
+    </div>
+    <div class="form-group">
+      <label for="origin_city">Origin City</label>
+      <input type="text" name="origin_city">
+    </div>
+    <div class="form-group">
+      <label for="departure_time">Departure Time</label>
+      <input type="text" name="departure_time">
+    </div>
+    <div class="form-group">
+      <label for="final_destination_city">Final Destination City</label>
+      <input type="text" name="final_destination_city">
+    </div>
+    <div class="form-group">
+      <label for="arrival_time">Arrival Time</label>
+      <input type="text" name="arrival_time">
+    </div>
+    <div class="form-group">
+      <label for="stops">Stops:</label>
+      <% @stops.each() do |stop| %>
+      <label for="stops"><%= stop.city_name %></label>
+      <input type="checkbox" name="stops[]" value="<%= stop.stop_name %>">
+      <% end %>
+    </div>
+    <button type="submit">Submit</button>
+</form>

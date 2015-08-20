@@ -24,7 +24,7 @@
       <% if @stops.any? %>
       <label for="stops">Stops:</label>
       <% @stops.each() do |stop| %>
-      <label for="stops"><%= stop.stop_name %></label>
+      <label for="stops"><%= stop.city_name %></label>
       <input type="checkbox" name="stops[]" value="<%= stop.stop_name %>">
       <% end %>
       <% else %>
@@ -48,8 +48,8 @@
       <% if @stops.any? %>
       <label for="stops">Stops:</label>
       <% @stops.each() do |stop| %>
-      <label for="stops"><%= stop.stop_name %></label>
-      <input type="checkbox" name="stops[]" value="<%= stop.stop_name %>">
+      <label for="city_stops"><%= stop.city_name %></label>
+      <input type="checkbox" name="city_stops[]" value="<%= stop.stop_name %>">
       <% end %>
       <% else %>
           No Stops, Add some stops!
@@ -65,14 +65,10 @@
 <form method="post" action="/employee/new_stop/">
 <h3>Add a New Stop</h3>
 <div class="form-group">
-  <label for="train_id">Train Name</label>
-  <input type="text" name="train_name">
   <label for="stop_id">Stop Name</label>
   <input type="text" name="stop_name">
   <label for="city_id">City Name</label>
   <input type="text" name="city_name">
-  <label for="time">Time</label>
-  <input type="text" name="time">
   <button type="submit">Add New Stop</button>
 </div>
 </form>
@@ -80,3 +76,5 @@
 <form action="/employee/clear_stops/" method="post">
   <button type="submit">Clear Stops</button>
 </form>
+
+<a href="/">go back</a>

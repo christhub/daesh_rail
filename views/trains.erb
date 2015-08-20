@@ -8,6 +8,7 @@
         <th>Final Destination</th>
         <th>Departure Time</th>
         <th>Stops</th>
+        <th></th>
       </tr>
     <% @trains.each() do |train| %>
     <tr>
@@ -25,6 +26,15 @@
       </td>
       <td>
         <%=train.stops%>
+      </td>
+      <td>
+        <a href="/employee/modify_train/<%= train.id %>/">Update</a>
+      </td>
+      <td>
+        <form action="/trains/<%= train.id() %>" method="post">
+          <input name="_method" type="hidden" value="delete">
+          <button type="submit">Delete</button>
+        </form>
       </td>
     <tr>
     <% end %>

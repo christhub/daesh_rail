@@ -1,10 +1,9 @@
 class Stop
 
-  attr_reader(:id, :train_name, :city_name, :stop_name)
+  attr_reader(:id, :city_name, :stop_name)
 
   define_method(:initialize) do |attributes|
     @id = attributes.fetch(:id)
-    @train_name = attributes.fetch(:train_name)
     @city_name = attributes.fetch(:city_name)
     @stop_name = attributes.fetch(:stop_name)
   end
@@ -13,17 +12,16 @@ class Stop
     database_results = DB.exec("SELECT * FROM stop;")
     stops = []
     database_results.each do |stop|
-      train_name = stop.fetch('train_name')
       id = stop.fetch('id').to_i
       city_name = stop.fetch('city_name')
       stop_name = stop.fetch('stop_name')
-      stops << Stop.new({id: id, train_name: train_name, city_name: city_name, stop_name: stop_name})
+      stops << Stop.new({id: id, city_name: city_name, stop_name: stop_name})
     end
     stops
   end
 
   define_method(:save) do
-    DB.exec("INSERT INTO stop (train_name, city_name, stop_name) VALUES ('#{train_name}', '#{city_name}', '#{stop_name}');")
+    DB.exec("INSERT INTO stop ( city_name, stop_name) VALUES ('#{city_name}', '#{stop_name}');")
   end
 
   define_method(:==) do |stop|
