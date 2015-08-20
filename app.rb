@@ -41,7 +41,7 @@ end
 
 post('/employee/new_city/') do
   city_name = params.fetch('city_name', nil)
-  city_stops = params.fetch('city_stops', nil).join('')
+  city_stops = params.fetch('city_stops', nil).join(' | ')
   new_city = Cities.new({:id => nil, :city_name => city_name, :city_stops => city_stops})
   new_city.save
   erb(:employee_form_success)
@@ -89,6 +89,9 @@ patch('/employee/modify_train') do
   redirect('/trains/')
 end
 
-post('/employee/delete_train') do
-
+delete('/employee/delete_train/:id/') do
+  @trains = Train.find_by_id(params.fetch("id").to_i)
+  @trains.delete()
+  @trains = Train.all()
+  redirect('/trains/')
 end

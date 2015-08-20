@@ -31,7 +31,7 @@
         <a href="/employee/modify_train/<%= train.id %>/">Update</a>
       </td>
       <td>
-        <form action="/trains/<%= train.id() %>" method="post">
+        <form action="/employee/delete_train/<%= train.id() %>/" method="post">
           <input name="_method" type="hidden" value="delete">
           <button type="submit">Delete</button>
         </form>
